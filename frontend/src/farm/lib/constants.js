@@ -18,14 +18,14 @@ export const supportedPools = [
     pid: 0,
     lpAddresses: {
       42: '0x2e4c125f3c2baefd71c9100601caa13a198cc008',
-      21004: '0x7f80D0C022Bc660305202c300F264aEA3753Fc56', // BCK-BCW 22.68614   UNI-V2 이거인듯
+      21004: '0xC14770E46e2C9B53304486F7a3a27e9522091Eff', //UNI-V2 0.31606 : Add 0.1 C4EI and 0.998 BCW --> 0xC14770E46e2C9B53304486F7a3a27e9522091Eff --> LP (C4EI_BCW)
     },
     tokenAddresses: {
       42: '0xAdA673d512415c98e04C068A3b50022B2696cCCE',
       21004: '0x58A3F3237Ac6DD279702f2ec02C36ab536FF08e1',
     },
-    name: 'BCK-BCW',
-    symbol: 'BCK-BCW UNI-V2 LP',
+    name: 'C4EI-BCW',
+    symbol: 'C4EI-BCW UNI-V2 LP',
     tokenSymbol: 'BCK',
     icon: '',
     pool: '100%',
