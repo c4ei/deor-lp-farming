@@ -1,18 +1,18 @@
 {
   "default": {
     "erc20": {
-      "name": "C4EI Mock Token",
-      "symbol": "C4EI",
-      "decimals": 18,
-      "supply": "10000000000000000000"
+      "name": "DEOR Mock Token",
+      "symbol": "DEOR",
+      "decimals": 10,
+      "supply": "100000000000"
     },
-    "rewardPerBlock": "1000000000000000",
+    "rewardPerBlock": "10000000",
     "delay": 30,
-    "fund": "5000000000000000000",
+    "fund": "50000000000",
     "lp": [
       {
-        "name": "C4EI LP Mock",
-        "symbol": "LP C4EI",
+        "name": "DEOR LP Mock",
+        "symbol": "LP DEOR",
         "decimals": 18,
         "allocPoint": 120
       }
@@ -34,14 +34,14 @@
   },
   "mainnet": {
     "erc20": {
-      "address": "0x58A3F3237Ac6DD279702f2ec02C36ab536FF08e1"
+      "address": "0x63726dAe7C57d25e90ec829ce9a5C745Ffd984d3"
     },
     "rewardPerBlock": "40000000000",
     "delay": 30,
     "fund": "100000000000000000",
     "lp": [
       {
-        "address": "0xC14770E46e2C9B53304486F7a3a27e9522091Eff",
+        "address": "0x856e90282961c0e7f6693fd2f62b35d5df9783cf",
         "allocPoint": 120
       }
     ]

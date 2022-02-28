@@ -30,6 +30,21 @@ contract Farm is Ownable {
         //   2. User receives the pending reward sent to his/her address.
         //   3. User's `amount` gets updated.
         //   4. User's `rewardDebt` gets updated.
+
+        //uint256 금액; // 사용자가 제공한 LP 토큰 수.
+        //uint256 보상 부채; // 부채를 보상합니다. 아래 설명을 참조하십시오.
+        //
+        // 우리는 여기서 멋진 수학을 합니다. 기본적으로 어느 시점에서든 ERC20의 양은
+        // 사용자에게 권한이 있지만 배포 대기 중인 경우:
+        //
+        // 보류 중인 보상 = (user.amount * pool.accERC20PerShare) - user.rewardDebt
+        //
+        // 사용자가 풀에 LP 토큰을 입금하거나 출금할 때마다. 다음은 발생합니다.
+        // 1. 풀의 `accERC20PerShare`(및 `lastRewardBlock`)가 업데이트됩니다.
+        // 2. 사용자는 자신의 주소로 전송된 보류 보상을 받습니다.
+        // 3. 사용자의 '금액'이 업데이트됩니다.
+        // 4. 사용자의 `rewardDebt`가 업데이트됩니다.
+
     }
 
     // Info of each pool.
@@ -38,6 +53,10 @@ contract Farm is Ownable {
         uint256 allocPoint;         // How many allocation points assigned to this pool. ERC20s to distribute per block.
         uint256 lastRewardBlock;    // Last block number that ERC20s distribution occurs.
         uint256 accERC20PerShare;   // Accumulated ERC20s per share, times 1e36.
+        // IERC20 lpToken; // LP 토큰 계약의 주소입니다.
+        // uint256 할당점; // 이 풀에 할당된 할당 포인트 수. 블록당 배포할 ERC20.
+        // uint256 lastRewardBlock; // ERC20s 배포가 발생한 마지막 블록 번호입니다.
+        // uint256 accERC20PerShare; // 주당 누적 ERC20, 곱하기 1e36.
     }
 
     // Address of the ERC20 Token contract.
@@ -85,6 +104,7 @@ contract Farm is Ownable {
 
     // Add a new lp to the pool. Can only be called by the owner.
     // DO NOT add the same LP token more than once. Rewards will be messed up if you do.
+    //동일한 LP 토큰을 두 번 이상 추가하지 마십시오. 그렇게하면 보상이 엉망이 될 것입니다.
     function add(uint256 _allocPoint, IERC20 _lpToken, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
@@ -100,6 +120,7 @@ contract Farm is Ownable {
     }
 
     // Update the given pool's ERC20 allocation point. Can only be called by the owner.
+    //지정된 풀의 ERC20 할당 지점을 업데이트합니다. 소유자만 호출할 수 있습니다.
     function set(uint256 _pid, uint256 _allocPoint, bool _withUpdate) public onlyOwner {
         if (_withUpdate) {
             massUpdatePools();
@@ -108,7 +129,7 @@ contract Farm is Ownable {
         poolInfo[_pid].allocPoint = _allocPoint;
     }
 
-    // View function to see deposited LP for a user.
+    // View function to see deposited LP for a user. //사용자에게 예치된 LP를 조회하는 기능
     function deposited(uint256 _pid, address _user) external view returns (uint256) {
         UserInfo storage user = userInfo[_pid][_user];
         return user.amount;
@@ -131,7 +152,7 @@ contract Farm is Ownable {
         return user.amount.mul(accERC20PerShare).div(1e36).sub(user.rewardDebt);
     }
 
-    // View function for total reward the farm has yet to pay out.
+    // View function for total reward the farm has yet to pay out.//농장에서 아직 지불하지 않은 총 보상 보기 기능입니다.
     function totalPending() external view returns (uint256) {
         if (block.number <= startBlock) {
             return 0;
@@ -142,6 +163,7 @@ contract Farm is Ownable {
     }
 
     // Update reward variables for all pools. Be careful of gas spending!
+    // 모든 풀에 대한 보상 변수를 업데이트합니다. 가스 소비를 조심하십시오!
     function massUpdatePools() public {
         uint256 length = poolInfo.length;
         for (uint256 pid = 0; pid < length; ++pid) {
@@ -150,6 +172,7 @@ contract Farm is Ownable {
     }
 
     // Update reward variables of the given pool to be up-to-date.
+    //주어진 풀의 보상 변수를 최신으로 업데이트합니다.
     function updatePool(uint256 _pid) public {
         PoolInfo storage pool = poolInfo[_pid];
         uint256 lastBlock = block.number < endBlock ? block.number : endBlock;
@@ -170,7 +193,7 @@ contract Farm is Ownable {
         pool.lastRewardBlock = block.number;
     }
 
-    // Deposit LP tokens to Farm for ERC20 allocation.
+    // Deposit LP tokens to Farm for ERC20 allocation. //ERC20 할당을 위해 Farm에 LP 토큰을 예치합니다.
     function deposit(uint256 _pid, uint256 _amount) public {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
@@ -199,7 +222,7 @@ contract Farm is Ownable {
         emit Withdraw(msg.sender, _pid, _amount);
     }
 
-    // Withdraw without caring about rewards. EMERGENCY ONLY.
+    // Withdraw without caring about rewards. EMERGENCY ONLY. //보상에 신경 쓰지 않고 Withdraw하십시오. 비상시에만.
     function emergencyWithdraw(uint256 _pid) public {
         PoolInfo storage pool = poolInfo[_pid];
         UserInfo storage user = userInfo[_pid][msg.sender];
@@ -210,6 +233,7 @@ contract Farm is Ownable {
     }
 
     // Transfer ERC20 and update the required ERC20 to payout all rewards
+    //ERC20을 전송하고 필요한 ERC20을 업데이트하여 모든 보상을 지급합니다.
     function erc20Transfer(address _to, uint256 _amount) internal {
         erc20.transfer(_to, _amount);
         paidOut += _amount;

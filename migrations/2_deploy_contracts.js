@@ -75,8 +75,8 @@ module.exports = function(deployer, network, addresses) {
             return LP.deployed();
           })
           .then((lpInstance) => {
-            const amount = web3.utils.toBN(10).pow(web3.utils.toBN(token.decimals))
-              .mul(web3.utils.toBN(1000));
+            // const amount = web3.utils.toBN(10).pow(web3.utils.toBN(token.decimals)).mul(web3.utils.toBN(1000));
+            const amount = web3.utils.toBN(18).pow(web3.utils.toBN(token.decimals)).mul(web3.utils.toBN(100000000000));
 
             const promises = addresses.map((address) => {
               return lpInstance.mint(address, amount);
