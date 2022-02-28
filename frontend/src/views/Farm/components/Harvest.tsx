@@ -36,12 +36,12 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
           <StyledCardHeader>
             <CardIcon><img src={imageDEOR} height="50" style={{ marginTop: -4 }} /></CardIcon>
             <Value value={getBalanceNumber(earnings, 18)} decimals={3} />
-            <Label text="DEOR Earned" />
+            <Label text="C4EI Earned" />
           </StyledCardHeader>
           <StyledCardActions>
             <Button
               disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting DEOR' : 'Harvest'}
+              text={pendingTx ? 'Collecting C4EI' : 'Harvest'}
               variant={'secondary'}
               border
               onClick={async () => {

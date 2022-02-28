@@ -1,11 +1,11 @@
 {
-  "short_name": "DEOR",
-  "name": "Farm DEOR with Uniswap LP Tokens",
+  "short_name": "C4EI",
+  "name": "Farm C4EI with Uniswap LP Tokens",
   "icons": [
     {
       "src": "favicon.svg",
       "type": "image/svg",
-      "sizes": "240x240"
+      "sizes": "170x170"
     }
   ],
   "start_url": ".",

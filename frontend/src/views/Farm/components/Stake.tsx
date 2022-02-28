@@ -26,7 +26,9 @@ import { getBalanceNumber } from '../../../utils/formatBalance'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 
-import imageUniswap from '../../../assets/img/logo-uniswap.svg'
+// import imageUniswap from '../../../assets/img/logo-uniswap.svg'
+import imageBcw from '../../../assets/img/bcw_256.png'
+import imageC4ei from '../../../assets/img/logo.svg'
 
 interface StakeProps {
   lpContract: Contract
@@ -80,7 +82,10 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
       <CardContent>
         <StyledCardContentInner>
           <StyledCardHeader>
-            <CardIcon><img src={imageUniswap} height="50" style={{ marginTop: -4 }} /></CardIcon>
+            <CardIcon>
+              <img src={imageC4ei} height="50" style={{ marginTop: -4 }} />
+              <img src={imageBcw} height="50" style={{ marginTop: -4 }} />
+            </CardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />
             <Label text={`${tokenName} Tokens Staked`} />
           </StyledCardHeader>

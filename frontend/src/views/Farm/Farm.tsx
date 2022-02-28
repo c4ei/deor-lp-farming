@@ -65,7 +65,9 @@ const Farm: React.FC<FarmProps> = ({ farmId }) => {
   return (
     <>
       <PageHeader
-        subtitle={`Deposit ${lpTokenName} Tokens and earn ${earnTokenName}`}
+        subtitle={`Deposit ${lpTokenName} Tokens and earn C4EI `
+        // ${earnTokenName}
+      }
         title={name}
       />
       <StyledFarm>
@@ -93,10 +95,10 @@ const Farm: React.FC<FarmProps> = ({ farmId }) => {
               }}
           >
             <Button
-                text="Open Uniswap Pool"
+                text="Add Liquidity"
                 backgroundColor='#ed007a'
                 size="xs"
-                href='https://info.uniswap.org/token/0x1d187BbeCeF8d7b1731339c301ab8354d4F0A50b'
+                href='https://swap.c4ei.net/#/add/ETH/0x58A3F3237Ac6DD279702f2ec02C36ab536FF08e1'
             />
         </div>
         <Spacer size="lg" />

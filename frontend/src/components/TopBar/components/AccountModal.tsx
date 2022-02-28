@@ -51,14 +51,15 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
             </CardIcon>
             <StyledBalance>
               <Value value={getBalanceNumber(erc20Balance, 18)} />
-              <Label text="BCK L2 Balance" />
+              <Label text="BCK Balance" />
             </StyledBalance>
           </StyledBalanceWrapper>
         </div>
 
         <Spacer />
         <Button
-          href={`https://${ethscanType}etherscan.io/address/${account}`}
+          // href={`https://${ethscanType}etherscan.io/address/${account}`}
+          href={`https://exp.c4ei.net/address/${account}`}
           text="View on Etherscan"
           variant="secondary"
         />
