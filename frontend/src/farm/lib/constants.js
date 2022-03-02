@@ -25,7 +25,7 @@ export const supportedPools = [
       21004: '0x58A3F3237Ac6DD279702f2ec02C36ab536FF08e1',
     },
     name: 'C4EI-BCW',
-    symbol: 'C4EI-BCW UNI-V2 LP',
+    symbol: 'C4EI-BCW LPV2',
     tokenSymbol: 'BCW',
     icon: '',
     pool: '100%',

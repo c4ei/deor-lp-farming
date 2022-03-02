@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import {contractAddresses} from '../../../farm/lib/constants';
 import {getEthChainInfo} from "../../../utils/getEthChainInfo";
-import githubLogo from '../../../assets/img/github.png'
-import {GITHUB} from '../../../constants/config';
+// import githubLogo from '../../../assets/img/github.png'
+// import {GITHUB} from '../../../constants/config';
 
 const {
     ethscanType,
