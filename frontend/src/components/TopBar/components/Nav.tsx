@@ -17,6 +17,9 @@ const Nav: React.FC<NavProps> = ({ showMenu }) => {
       <StyledLink exact activeClassName="active" to="/farms">
         Menu
       </StyledLink>
+      {/* <StyledLink exact activeClassName="active" to="https://swap.c4ei.net">
+        swap.c4ei.net
+      </StyledLink> */}
       </>)}
     </StyledNav>
   )

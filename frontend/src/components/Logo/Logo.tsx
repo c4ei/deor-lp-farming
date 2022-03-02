@@ -7,8 +7,8 @@ import logo from '../../assets/img/logo.svg'
 const Logo: React.FC = () => {
   return (
     <StyledLogo to="/">
-      <img src={logo} height="100" style={{ marginTop: -4 }} />
-      <strong>C4EI</strong> Liquidity Mining
+      <img src={logo} height="60" style={{ marginTop: -4 }} />
+      <strong>C4EI</strong> Farm
     </StyledLogo>
   )
 }

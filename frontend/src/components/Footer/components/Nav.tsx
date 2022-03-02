@@ -15,24 +15,28 @@ const contractAddressesTemp = contractAddresses as {[index: string]:any};
 const Nav: React.FC = () => {
     return (
     <StyledNav>
-      <StyledLink
+      <StyledLink target="_blank" href={`https://swap.c4ei.net`} title="get LP token">
+        swap.c4ei.net (get LP token)
+      </StyledLink>
+      {/* <StyledLink
         target="_blank"
         href={`https://${ethscanType}etherscan.io/token/${contractAddressesTemp.erc20[chainId]}#code`}
       >
-        ERC20 Contract
-      </StyledLink>
-      <StyledLink
+        BCW Address
+      </StyledLink> */}
+      {/* <StyledLink
         target="_blank"
-        href={`https://${ethscanType}etherscan.io/address/${contractAddressesTemp.farm[chainId]}#code`}
+        // href={`https://${ethscanType}etherscan.io/address/${contractAddressesTemp.farm[chainId]}#code`}
+        href={`https://exp.c4ei.net/address/${contractAddressesTemp.farm[chainId]}`}
       >
         Farm Contract
-      </StyledLink>
-      <StyledLink
+      </StyledLink> */}
+      {/* <StyledLink
         target="_blank"
         href={GITHUB}
       >
         <img src={githubLogo} />
-      </StyledLink>
+      </StyledLink> */}
     </StyledNav>
   )
 }

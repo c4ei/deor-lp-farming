@@ -29,11 +29,11 @@ const Farms: React.FC = () => {
         {(!!account && farmId) ? (
           <>
             <Route exact path={path}>
-              <PageHeader
+              {/* <PageHeader
                 icon={<img src={chef} height="120" />}
                 subtitle="Earn L2 tokens by staking Uniswap V2 LP Tokens."
                 title="Select Your Favorite Dishes"
-              />
+              /> */}
               <FarmCards />
             </Route> 
             <Route path={'/'}>
